@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1275081260343188212
+--- !u!1 &8646682887817367294
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5433441834239836751}
-  - component: {fileID: 2003628584871062754}
+  - component: {fileID: 8411900947891805736}
+  - component: {fileID: 193552483547899424}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: TestManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5433441834239836751
+--- !u!4 &8411900947891805736
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275081260343188212}
+  m_GameObject: {fileID: 8646682887817367294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17883126, y: 2.975169, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2003628584871062754
+--- !u!114 &193552483547899424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275081260343188212}
+  m_GameObject: {fileID: 8646682887817367294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc6c08be71e4bc4eac4e0ce1b6dba85, type: 3}
+  m_Script: {fileID: 11500000, guid: eb32e12fd18adcf45845e1b049151356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 6679897577520174009, guid: 03f658d4cef9ce34493d1ee9d9e16fcd, type: 3}
-  _asteroidSpawnTimerMax: 2
-  _asteroidPrefab: {fileID: 6515077216728887779, guid: e8877ce47d87c1a4eb0b3ac430635843, type: 3}
+  _bulletPrefab: {fileID: 1708561100645684380, guid: f83740b2f3e68e949990fa5ee75156a2, type: 3}
+  _asteroidPrefab: {fileID: 1680943601958473285, guid: e8877ce47d87c1a4eb0b3ac430635843, type: 3}

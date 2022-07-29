@@ -12,32 +12,34 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _rend = GetComponent<Renderer>();
+        Initialise();
     }
 
     public void Initialise()
     {
-        //_rad = transform.localScale.x / 2f;
+        _rad = transform.localScale.x / 2f;
+        GameManager._bulletList.Add(this);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
-        CheckOffscreen();
+        if (GameManager.IsPlaying())
+        {
+            Move();
+            CheckOffscreen();
+        }
     }
 
     void Move()
     {
-        float _travelDist = _spd * Time.deltaTime;
+        float _travelDist = _spd * Time.fixedDeltaTime;
         Vector3 newPos = transform.position + (Vector3.up * _travelDist);
         RaycastHit hit;
         Ray hitRay = new Ray(transform.position, Vector3.up);
 
-        Debug.DrawRay(hitRay.origin, hitRay.direction);
-
-        if (Physics.Raycast(hitRay, out hit, _scanDist))
+        if (Physics.SphereCast(hitRay, _rad, out hit, _scanDist))
         {
-            Debug.Log("Checking hit");
             CheckHit(hit);
         }
 
@@ -48,23 +50,24 @@ public class Bullet : MonoBehaviour
     {
         if (hit.collider.TryGetComponent<Asteroid>(out Asteroid hitObj))
         {
-            Debug.Log("Hit found");
-            hitObj.EndOfLife();
+            hitObj.EndOfLife(true);
             transform.position = hit.point;
-            EndOfLife();
+            EndOfLife(true);
         }
     }
 
     void CheckOffscreen()
     {
-        if (!_rend.isVisible)
+        if (Camera.main != null && !_rend.isVisible)
         {
-            EndOfLife();
+            EndOfLife(true);
         }
     }
 
-    void EndOfLife()
+    public void EndOfLife(bool remove)
     {
+        if (remove)
+            GameManager._bulletList.Remove(this);
         Destroy(this.gameObject);
     }
 }

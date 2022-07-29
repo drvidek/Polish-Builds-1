@@ -10,8 +10,12 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (!Shoot())
-            ManageShotDelay();
+        if (GameManager.IsPlaying())
+        {
+            if (!Shoot())
+                ManageShotDelay();
+        }
+
     }
 
     bool Shoot()
