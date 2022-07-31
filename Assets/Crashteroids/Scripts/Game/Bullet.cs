@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour
     {
         if (hit.collider.TryGetComponent<Asteroid>(out Asteroid hitObj))
         {
+            hitObj.AddScore();
             hitObj.EndOfLife(true);
             transform.position = hit.point;
             EndOfLife(true);
@@ -58,15 +59,26 @@ public class Bullet : MonoBehaviour
 
     void CheckOffscreen()
     {
-        if (Camera.main != null && !_rend.isVisible)
+        if (Camera.main != null)
         {
-            EndOfLife(true);
+            Vector3 _screenPos = Camera.main.WorldToViewportPoint(transform.position);
+            if (_screenPos.y > 1.05f)
+            {
+                Offscreen();
+            }
         }
+    }
+
+    public void Offscreen()
+    {
+        ScoreKeeper scoreKeeper = GameObject.Find("GameManager").GetComponent<ScoreKeeper>();
+        scoreKeeper.ResetCombo();
+        EndOfLife(true);
     }
 
     public void EndOfLife(bool remove)
     {
-        if (remove)
+        if (remove && GameManager._bulletList.Contains(this))
             GameManager._bulletList.Remove(this);
         Destroy(this.gameObject);
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5433441834239836751}
   - component: {fileID: 2003628584871062754}
+  - component: {fileID: 4256299418765339433}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,6 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc6c08be71e4bc4eac4e0ce1b6dba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 6679897577520174009, guid: 03f658d4cef9ce34493d1ee9d9e16fcd, type: 3}
-  _asteroidSpawnTimerMax: 2
+  _scoreKeeper: {fileID: 0}
+  _asteroidSpawnTimerMin: 1
+  _asteroidSpawnTimerMax: 3
+  _asteroidSpawnCountMin: 1
+  _asteroidSpawnCountMax: 3
   _asteroidPrefab: {fileID: 6515077216728887779, guid: e8877ce47d87c1a4eb0b3ac430635843, type: 3}
+  _endPanel: {fileID: 0}
+--- !u!114 &4256299418765339433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275081260343188212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c6a251866a73743a645c8aa27c339d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combo: 1
+  _scoreText: {fileID: 0}
+  _comboText: {fileID: 0}

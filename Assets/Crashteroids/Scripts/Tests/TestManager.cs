@@ -22,4 +22,14 @@ public class TestManager : MonoBehaviour
     {
         return Instantiate<Asteroid>(_asteroidPrefab);
     }
+
+    public void SpawnAsteroidAndBullet(out Bullet bullet, out Asteroid asteroid)
+    {
+        bullet = GetBullet();
+        bullet.transform.position = Vector3.down * 3f;
+
+        asteroid = GetAsteroid();
+        asteroid.transform.position = Vector3.up * 3f;
+    }
 }
+

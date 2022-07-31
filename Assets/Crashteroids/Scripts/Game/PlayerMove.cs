@@ -36,7 +36,6 @@ public class PlayerMove : MonoBehaviour
             //float _verMove = Input.GetAxis("Vertical");
             Move(_horMove, 0); //_verMove);
             StayOnScreen();
-            CheckCollision();
         }
     }
 
@@ -52,35 +51,21 @@ public class PlayerMove : MonoBehaviour
         if (cam != null)
         {
             Vector3 _posOnCam = cam.WorldToViewportPoint(transform.position);
-            Vector3 newPos = transform.position;
             _posOnCam.x = Mathf.Clamp(_posOnCam.x, 0, 1);
-            newPos = cam.ViewportToWorldPoint(_posOnCam);
+            Vector3 newPos = cam.ViewportToWorldPoint(_posOnCam);
             transform.position = newPos;
         }
     }
 
-    private void CheckCollision()
+    private bool CheckAsteroidHit(Collider collider)
     {
-        Debug.Log("Checking collision");
-
-        Collider[] colliders = Physics.OverlapBox(transform.position, _collider.size / 2f);
-        if (colliders.Length > 1)
-        {
-            Debug.Log("Found colliders");
-            if (CheckColliders(colliders))
-                EndOfLife();
-        }
+        return collider.GetComponent<Asteroid>() != null;
     }
 
-    private bool CheckColliders(Collider[] colliders)
+    private void OnTriggerEnter(Collider other)
     {
-        bool hitFound = false;
-        foreach (Collider collider in colliders)
-        {
-            Debug.Log("Checking for asteroid");
-            hitFound = (collider.GetComponent<Asteroid>() != null);
-        }
-        return hitFound;
+        if (CheckAsteroidHit(other))
+            EndOfLife();
     }
 
     public void EndOfLife()
